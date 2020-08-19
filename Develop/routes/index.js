@@ -8,14 +8,15 @@ router.get("/", function(req,res){
 })
 
 router.get("/notes", function(req,res){
-    res.sendFile(path.join(__dirname,"../public/index.html"))
+    console.log("router.get")
+    res.sendFile(path.join(__dirname,"../public/notes.html"))
 })
 
 router.get("/api/notes", function(req, res){
     
     db = JSON.parse(fs.readFileSync("./db/db.json", "utf-8"))
     console.log("get Route", db)
-    res.JSON.db
+    res.json(db)
 })
 
 module.exports = router
