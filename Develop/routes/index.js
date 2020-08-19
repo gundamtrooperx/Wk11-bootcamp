@@ -35,13 +35,14 @@ router.post("/api/notes", function(req, res){
     
 })
 
-router.delete("/api/notes", function(req, res){
+router.delete("/api/notes/:id", function(req, res){
     var deletenotes = []
     for(let i = 0; i < db.length; i ++ ){
         if(db[i].id != req.params.id){
             deletenotes.push(db[i])
         }
     }
+    console.log("deletenotes",deletenotes)
     db = deletenotes
     fs.writeFileSync("./db/db.json",JSON.stringify(db), function(){
         
